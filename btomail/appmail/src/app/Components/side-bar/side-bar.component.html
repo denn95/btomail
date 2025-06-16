@@ -1,0 +1,97 @@
+<!----<!DOCTYPE html>
+<html>
+<head>
+<title>Menú lateral escamoteable sin JavaScript</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+</head>
+<body>
+    <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+    <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
+    <input type="text" class="form-control search" >
+    <div id="sidebar" class="sidebar">
+        <img src="../../../assets/images/redactar-icon.PNG" (click)="abrirBandeja()">
+        <ul class="menu">
+            <li><a [routerLink]="[ '/']" >Recibidos</a></li>
+            <li><a [routerLink]="[ '/enviados']">Enviados</a></li>
+            <li><a [routerLink]="[ '/destacados']">Destacados</a></li>
+            <li><a [routerLink]="[ '/spam']">Spam</a></li>
+            <li><a [routerLink]="[ '/eliminados']">Papelera</a></li>
+        </ul>
+    </div>
+    <div id="contenido">
+        <router-outlet></router-outlet>
+        
+            <div class="card bandeja " *ngIf="bandejaMensaje">
+                <div class="card-header color">
+                  
+                    <strong>Mensaje nuevo</strong> <button (click)="cerrarBandeja()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                                    
+                </div>
+                <div class="card-body ">
+                  De<input type="text" #correoEmisor="ngModel" [(ngModel)]="mail.correoEmisor" class="form-control">
+                  Para<input type="text" #correoReceptor="ngModel" [(ngModel)]="mail.correoReceptor" class="form-control">
+                  <input type="text" #asunto="ngModel" [(ngModel)]="mail.asunto" class="form-control" placeholder="Asunto">
+                  <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="mail.mensaje" id="mensaje" cols="47" rows="8"></textarea>
+                  <button type="button" (click)="onSubmit(mail)" class="btn-enviar">Enviar</button>
+                </div>
+              </div>
+    </div>
+</body>
+</html> 
+              ----------------------------------------------------->
+
+
+              <div class="container-fluid m-0 py-0 p-0 border" id="content">
+                <div class="row h-100 m-0">
+                  <div class="col-lg-2 col-md-12 col-sm-12 h-100 border border-end ml-5 pr-5 row justify-content-center">
+                    <div class="list-group list-group-flush mr-5">
+                      <button class="btn border border-1 my-3 ml-4"
+                      (click)="abrirBandeja()" id="btnredactar">Redactar</button>
+                      <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/"
+                        routerLinkActive="activo">
+                        <fa-icon [icon]="faEnvelope" class="mx-2"></fa-icon> Recibidos
+                      </a>
+                      <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/enviados"
+                        routerLinkActive="activo">
+                        <fa-icon [icon]="faPaperPlane" class="mx-2"></fa-icon> Enviados
+                      </a>
+                      <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/destacados"
+                        routerLinkActive="activo">
+                        <fa-icon [icon]="faStar" ></fa-icon> Destacados
+                      </a>
+                      <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/spam"
+                        routerLinkActive="activo">
+                        <fa-icon [icon]="faExclamationTriangle" class="mx-2"></fa-icon> Spam
+                      </a>
+                      <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/eliminados"
+                        routerLinkActive="activo">
+                        <fa-icon [icon]="faTrashAlt" ></fa-icon> Eliminados
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-lg-10 col-md-12 col-sm-12">
+                    <router-outlet></router-outlet>
+                    <div class="card bandeja " *ngIf="bandejaMensaje">
+                        <div class="card-header color">
+                          
+                            <strong>Mensaje nuevo</strong> <button (click)="cerrarBandeja()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                                            
+                        </div>
+                        <div class="card-body ">
+                          De<input type="text" #correoEmisor="ngModel" [(ngModel)]="mail.correoEmisor" class="form-control">
+                          Para<input type="text" #correoReceptor="ngModel" [(ngModel)]="mail.correoReceptor" class="form-control">
+                          <input type="text" #asunto="ngModel" [(ngModel)]="mail.asunto" class="form-control" placeholder="Asunto">
+                          <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="mail.mensaje" id="mensaje" cols="47" rows="8"></textarea>
+                          <button type="button" (click)="onSubmit(mail)" class="btn-enviar">Enviar</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+        
+

@@ -1,0 +1,5 @@
+.material-icons.md-dark { color: rgba(243, 159, 4, 0.89); }
+.material-icons.md-dark.md-inactive { color: #fff; border: rgb(12, 10, 10);}
+.material-icons.md-delete { color: rgba(243, 4, 4, 0.89); }
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

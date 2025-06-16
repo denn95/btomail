@@ -1,0 +1,28 @@
+export class Correo{
+     idCorreo:number=0;
+	 nombreEmisor:string="";
+	 correoEmisor:string="";
+	 fecha:Date;
+	 asunto:string="";
+	 mensaje:string="";
+	 categoria:boolean=false;
+	 leido:boolean=false;
+	 destacado:boolean=false;
+	 eliminado:boolean=false;
+	 spam:boolean=false;
+	 correoReceptor:string="";
+     constructor(){
+         this.idCorreo=this.idCorreo;
+         this.nombreEmisor=this.nombreEmisor;
+         this.correoEmisor=this.correoEmisor;
+         this.fecha=this.fecha;
+         this.asunto=this.asunto;
+         this.mensaje=this.mensaje;
+         this.categoria=this.categoria;
+         this.leido=this.leido;
+         this.destacado=this.destacado;
+         this.eliminado=this.eliminado;
+         this.spam=this.spam;
+         this.correoReceptor=this.correoReceptor;
+     }
+}

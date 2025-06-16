@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      &nbsp;&nbsp;&nbsp;
+      
+      <table class="table table-hover">
+        <tbody>
+            <tr *ngFor="let recibido of recibidos | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td scope="row"><input type="checkbox"/></td>
+                <td><span class="material-icons md-dark" *ngIf="recibido.destacado" (click)="destacadoActivar(!recibido.destacado,recibido.idCorreo)">star</span><span class="material-icons md-inactive" *ngIf="!recibido.destacado" (click)="destacadoDesactivar(!recibido.destacado,recibido.idCorreo)">star</span></td>
+                <td><span class="material-icons md-dark" (click)="actSpam(!recibido.spam,recibido.idCorreo)">warning</span></td>
+                <td [ngClass]="{leido: recibido.leido, noLeido: !recibido.leido}">{{recibido.nombreEmisor}}</td>
+                <td [ngClass]="{leido: recibido.leido, noLeido: !recibido.leido}">{{recibido.asunto}}</td>
+                <td>{{recibido.mensaje}}</td>
+              <td> <i class="fa fa-file-archive-o"> </i> </td>
+              <td>{{recibido.fecha | horaP}}</td>
+              <td><span class="material-icons md-delete" (click)="eliminar(!recibido.eliminado,recibido.idCorreo)">delete</span></td>
+              <td><span class="material-icons-outlined" (click)="actualizarLeido(!recibido.leido,recibido.idCorreo)">drafts</span></td>
+              
+            </tr>
+            
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div role="tabpanel" class="tab-pane" id="settings">
+    </div>
+  </div>
+</body>
+</html>

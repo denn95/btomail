@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      &nbsp;&nbsp;&nbsp;
+      
+      <table class="table table-hover">
+        <tbody>
+            <tr *ngFor="let eliminado of eliminados | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td scope="row"><input type="checkbox"/></td>
+                
+                <td>{{eliminado.asunto}}</td>
+                <td>{{eliminado.mensaje}}</td>
+              <td> <i class="fa fa-file-archive-o"> </i> </td>
+              <td>{{eliminado.fecha}}</td>
+              <td><span class="material-icons md-delete" (click)="eliminar(eliminado.idCorreo)">delete</span></td>
+            </tr>
+            
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div role="tabpanel" class="tab-pane" id="settings">
+    </div>
+  </div>
+</body>
+</html>

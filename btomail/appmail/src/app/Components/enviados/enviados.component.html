@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      &nbsp;&nbsp;&nbsp;
+      
+      <table class="table table-hover">
+        <tbody>
+            <tr *ngFor="let enviado of enviados">
+                <td scope="row"><input type="checkbox"/></td>
+                <td><span class="material-icons md-dark" *ngIf="enviado.destacado" (click)="destacadoActivar(!enviado.destacado,enviado.idCorreo)">star</span><span class="material-icons md-inactive" *ngIf="!enviado.destacado" (click)="destacadoDesactivar(!enviado.destacado,enviado.idCorreo)">star</span></td>
+                <td><span class="material-icons md-dark" >warning</span></td>
+                <td>{{enviado.correoReceptor}}</td>
+                <td>{{enviado.asunto}}</td>
+                <td>{{enviado.mensaje}}</td>
+              <td> <i class="fa fa-file-archive-o"> </i> </td>
+              <td>{{enviado.fecha | horaP}}</td>
+              <td><span class="material-icons md-delete" (click)="eliminar(!enviado.eliminado,enviado.idCorreo)">delete</span></td>
+            </tr>
+            
+        </tbody>
+      </table>
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="settings">
+    </div>
+  </div>
+</body>
+</html>

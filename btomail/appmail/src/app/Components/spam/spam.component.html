@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      &nbsp;&nbsp;&nbsp;
+      
+      <table class="table table-hover">
+        <tbody>
+            <tr *ngFor="let sp of spam | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td scope="row"><input type="checkbox"/></td>
+                <td><span class="material-icons md-dark" *ngIf="sp.destacado" (click)="destacadoActivar(!sp.destacado,sp.idCorreo)">star</span><span class="material-icons md-inactive" *ngIf="!sp.destacado" (click)="destacadoDesactivar(!sp.destacado,sp.idCorreo)">star</span></td>
+                
+                <td>{{sp.nombreEmisor}}</td>
+                <td>{{sp.asunto}}</td>
+                <td>{{sp.mensaje}}</td>
+              <td> <i class="fa fa-file-archive-o"> </i> </td>
+              <td>{{sp.fecha}}</td>
+              <td><span class="material-icons md-delete" (click)="eliminar(!sp.eliminado,sp.idCorreo)">delete</span></td>
+            </tr>
+            
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div role="tabpanel" class="tab-pane" id="settings">
+    </div>
+  </div>
+</body>
+</html>

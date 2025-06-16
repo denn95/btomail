@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      &nbsp;&nbsp;&nbsp;
+      
+      <table class="table table-hover">
+        <tbody>
+            <tr *ngFor="let destacado of destacados">
+                <td scope="row"><input type="checkbox"/></td>
+                <td><span class="material-icons md-dark" *ngIf="destacado.destacado" (click)="destacadoActivar(!destacado.destacado,destacado.idCorreo)">star</span><span class="material-icons md-inactive" *ngIf="!destacado.destacado" (click)="destacadoDesactivar(!destacado.destacado,destacado.idCorreo)">star</span></td>
+                <td>{{destacado.nombreEmisor}}</td>
+                <td>{{destacado.asunto}}</td>
+                <td>{{destacado.mensaje}}</td>
+              <td> <i class="fa fa-file-archive-o"> </i> </td>
+              <td>{{destacado.fecha}}</td>
+              <td><span class="material-icons md-delete" (click)="eliminar(!destacado.eliminado,destacado.idCorreo)">delete</span></td>
+              
+            </tr>
+            
+        </tbody>
+      </table>
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="settings">
+    </div>
+  </div>
+</body>
+</html>
